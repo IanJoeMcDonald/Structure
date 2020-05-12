@@ -11,17 +11,27 @@ import UIKit
 class ViewController: UIViewController {
     
     var users: Users?
-    var tableViewDataSource: UsersTableViewDataSource!
-    var tableViewDelegate: UsersTableViewDelegate!
+    //var tableViewDataSource: UsersTableViewDataSource!
+    //var tableViewDelegate: UsersTableViewDelegate!
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let users = users else { return }
-        tableViewDataSource = UsersTableViewDataSource(users: users)
-        tableViewDelegate = UsersTableViewDelegate(users: users)
-        tableView.dataSource = tableViewDataSource
-        tableView.delegate = tableViewDelegate
+        //guard let users = users else { return }
+        //tableViewDataSource = UsersTableViewDataSource(users: users)
+        //tableViewDelegate = UsersTableViewDelegate(users: users)
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+}
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return users?.list.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 }

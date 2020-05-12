@@ -9,6 +9,8 @@
 import Foundation
 
 class Users {
+    static let shared = Users()
+    
     var list: [User]
     
     init() {

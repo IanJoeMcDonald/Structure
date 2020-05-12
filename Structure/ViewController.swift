@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        users = Users.shared
         guard let users = users else { return }
         tableViewDataSource = UsersTableViewDataSource(users: users)
         tableViewDelegate = UsersTableViewDelegate(users: users)
